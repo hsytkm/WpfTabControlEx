@@ -1,0 +1,52 @@
+﻿<Window
+    x:Class="WpfTabControlEx.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:WpfTabControlEx"
+    xmlns:mah="http://metro.mahapps.com/winfx/xaml/controls"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:zex="clr-namespace:ControlzEx.Controls;assembly=ControlzEx"
+    Title="WpfTabControlEx"
+    Width="400"
+    Height="500"
+    ResizeMode="CanResizeWithGrip"
+    Topmost="True"
+    mc:Ignorable="d">
+
+    <Window.DataContext>
+        <local:MainWindowViewModel />
+    </Window.DataContext>
+
+    <DockPanel>
+        <TextBlock
+            x:Name="TabControlNameTextBlock"
+            Margin="5"
+            DockPanel.Dock="Top"
+            FontSize="16" />
+
+        <TextBlock
+            Margin="5"
+            DockPanel.Dock="Top"
+            FontSize="16"
+            Text="{Binding SelectedTabItem.Header, StringFormat='SelectedTabItem : {0}'}" />
+
+        <!--
+            <TabControl>
+            <zex:TabControlEx>
+            <mah:MetroTabControl KeepVisualTreeInMemoryWhenChangingTabs="True">
+        -->
+        <TabControl x:Name="MyTabControl" SelectedItem="{Binding SelectedTabItem, Mode=TwoWay}">
+            <TabItem Header="tab1">
+                <local:MyControl Message="TabContent 1" />
+            </TabItem>
+            <TabItem Header="tab2">
+                <local:MyControl Message="TabContent 2" />
+            </TabItem>
+            <TabItem Header="tab3">
+                <local:MyControl Message="TabContent 3" />
+            </TabItem>
+        </TabControl>
+
+    </DockPanel>
+</Window>
